@@ -6,7 +6,12 @@ import styles from './ImageSlide.module.css'
 
 const dummyImages: StaticImageData[] = [Beach, City, Forest, MoraineLake, Town]
 
-const ImageSlider = ({ images = dummyImages, autoSlide = true }) => {
+interface ImageSliderProps {
+    images?: StaticImageData[],
+    autoSlide?: boolean,
+}
+
+const ImageSlider = ({ images = dummyImages, autoSlide = true }: ImageSliderProps): React.JSX.Element => {
     const [currentImage, setCurrentImage] = useState<number>(0)
 
     const showNextImage = () => {
