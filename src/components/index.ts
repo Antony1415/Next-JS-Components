@@ -1,1 +1,2 @@
-export * from './ImageSlider'
+export * from './ImageCarrousel'
+export * from './InfiniteScroll'

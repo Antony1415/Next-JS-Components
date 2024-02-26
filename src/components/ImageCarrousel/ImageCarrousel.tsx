@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from 'react'
 import { Beach, City, Forest, MoraineLake, Town } from './Images'
 import { StaticImageData } from 'next/image'
-import styles from './ImageSlide.module.css'
+import styles from './ImageCarrousel.module.css'
 
 const dummyImages: StaticImageData[] = [Beach, City, Forest, MoraineLake, Town]
 
-interface ImageSliderProps {
+interface ImageCarrouselProps {
     images?: StaticImageData[],
     autoSlide?: boolean,
 }
 
-const ImageSlider = ({ images = dummyImages, autoSlide = true }: ImageSliderProps): React.JSX.Element => {
+const ImageCarrousel = ({ images = dummyImages, autoSlide = true }: ImageCarrouselProps): React.JSX.Element => {
     const [currentImage, setCurrentImage] = useState<number>(0)
 
     const showNextImage = () => {
@@ -40,14 +40,14 @@ const ImageSlider = ({ images = dummyImages, autoSlide = true }: ImageSliderProp
 
     return (
         <div className='relative w-full h-full'>
-            <button className={styles.ImageSlide_button} onClick={showPrevImage}>{'<'}</button>
-            <button className={`${styles.ImageSlide_button} right-0`} onClick={showNextImage}>{'>'}</button>
+            <button className={styles.ImageCarrousel_button} onClick={showPrevImage}>{'<'}</button>
+            <button className={`${styles.ImageCarrousel_button} right-0`} onClick={showNextImage}>{'>'}</button>
 
             <div className='flex h-full w-full overflow-hidden'>
                 {images.map((image) => {
                     return (
                         <img
-                            className={styles.ImageSlide_image}
+                            className={styles.ImageCarrousel_image}
                             src={image.src}
                             style={{ translate: `${-100 * currentImage}%` }}
                         />
@@ -58,4 +58,4 @@ const ImageSlider = ({ images = dummyImages, autoSlide = true }: ImageSliderProp
     )
 }
 
-export default ImageSlider
+export default ImageCarrousel
